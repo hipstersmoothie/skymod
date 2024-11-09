@@ -176,12 +176,12 @@ export default function Home({ labelers }: { labelers: Labeler[] }) {
   const year = new Date().getFullYear();
   const [search, setSearch] = useState("");
   const [visibleLabelers, setVisibleLabelers] = useState(labelers);
+  console.log("SET", visibleLabelers);
   const setVisibleLabelersDebounced = useMemo(
     () =>
       debounce((filter: string) => {
         const term = filter.toLowerCase();
 
-        console.log("SET");
         setVisibleLabelers(
           labelers.filter(
             (labeler) =>
@@ -199,8 +199,10 @@ export default function Home({ labelers }: { labelers: Labeler[] }) {
                 })
                 .join(" ")
                 .includes(term) ||
-              labeler.policies.labelValueDefinitions?.some((d) =>
-                d.identifier.toLowerCase().includes(term)
+              labeler.policies.labelValueDefinitions?.some(
+                (d) =>
+                  d.locales[0].description.toLowerCase().includes(term) ||
+                  d.locales[0].name.toLowerCase().includes(term)
               )
           )
         );
