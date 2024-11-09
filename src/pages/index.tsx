@@ -290,7 +290,7 @@ export default function Home({ labelers }: { labelers: Labeler[] }) {
             </TooltipContent>
           </Tooltip>
         </div>
-        <div className="text-sm">Copyright © {year} Andrew Lisowski.</div>
+        <div className="text-sm">Copyright © {year} Andrew Lisowski</div>
       </footer>
     </div>
   );
