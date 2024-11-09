@@ -278,7 +278,7 @@ export default function Home({ labelers }: { labelers: Labeler[] }) {
           <Tooltip>
             <TooltipTrigger>
               <a
-                href="https://bsky.app/profile/hipstersmoothie.com"
+                href="https://github.com/hipstersmoothie/skymod"
                 target="_blank"
                 rel="noopener"
               >
