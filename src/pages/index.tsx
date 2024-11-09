@@ -244,12 +244,13 @@ export default function Home({ labelers }: { labelers: Labeler[] }) {
             </a>
             .
           </p>
-          <Input
-            placeholder="Search labelers"
-            value={search}
-            onChange={handleSearchChange}
-          />
         </div>
+        <Input
+          placeholder="Search labelers"
+          value={search}
+          onChange={handleSearchChange}
+          className="mt-8"
+        />
         <ol className="grid gap-4 md:gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 my-8">
           {visibleLabelers.map((labeler) => (
             <li key={labeler.uri}>
@@ -297,6 +298,8 @@ export default function Home({ labelers }: { labelers: Labeler[] }) {
 
 export async function getStaticProps() {
   return {
+    // revalidate every day
+    revalidate: 60 * 60 * 24,
     props: {
       labelers: await getLabelers(),
     },
